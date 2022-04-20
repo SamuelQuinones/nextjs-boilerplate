@@ -1,5 +1,5 @@
 // plopfile.ts
-import { execSync } from "child_process";
+import shelljs from "shelljs";
 import { NodePlopAPI } from "node-plop";
 import { HookGenerator } from "./hook";
 
@@ -10,12 +10,12 @@ export default function plop(plop: NodePlopAPI) {
 
   plop.setActionType("prettify", (answers, config) => {
     const data = config?.data as Record<string, any>;
-    execSync(`prettier --write "${data.path}"`);
+    shelljs.exec(`prettier --write "${data.path}"`);
     return "";
   });
   plop.setActionType("lintify", (answers, config) => {
     const data = config?.data as Record<string, any>;
-    execSync(`eslint --ext js,ts,tsx --fix "${data.path}"`);
+    shelljs.exec(`eslint --ext js,ts,tsx --fix "${data.path}"`);
     return "";
   });
 }

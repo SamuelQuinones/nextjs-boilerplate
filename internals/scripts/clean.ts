@@ -16,6 +16,7 @@ export async function cleanAndSetup() {
   shelljs.rm("-rf", "public/*");
   shelljs.rm("-rf", "src/*");
   shelljs.rm("-rf", ".github/*");
+  shelljs.rm("-rf", "vercel.json");
 
   shelljs.cp("internals/startingTemplate/README.md", "README.md");
   shelljs.cp("internals/startingTemplate/.gitignore.base", ".gitignore");
