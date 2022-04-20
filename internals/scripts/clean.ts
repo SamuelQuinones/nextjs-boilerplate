@@ -14,15 +14,13 @@ export async function cleanAndSetup() {
   shelljs.echo("\x1b[34m", "Cleaning the example app...", "\x1b[0m");
 
   shelljs.rm("-rf", "public/*");
-  shelljs.rm("-rf", "src/pages/*");
-  shelljs.rm("-rf", "src/styles/*");
+  shelljs.rm("-rf", "src/*");
   shelljs.rm("-rf", ".github/*");
 
   shelljs.cp("internals/startingTemplate/README.md", "README.md");
   shelljs.cp("internals/startingTemplate/.gitignore.base", ".gitignore");
   shelljs.cp("-r", "internals/startingTemplate/public/*", "public");
-  shelljs.cp("-r", "internals/startingTemplate/src/pages/*", "src/pages");
-  shelljs.cp("-r", "internals/startingTemplate/src/styles/*", "src/styles");
+  shelljs.cp("-r", "internals/startingTemplate/src*", "src");
 
   shelljs.rm("-rf", "internals/startingTemplate");
   //* POTENTIALLY CHANGE THIS IF MORE USEFUL SCRIPTS COME UP
