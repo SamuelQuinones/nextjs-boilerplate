@@ -58,4 +58,7 @@ yarn cleanAndSetup yarn
 
   <dt>Scaffolding via generators</dt>
   <dd>Create hooks right from your terminal</dd>
+
+  <dt>Focus on SEO</dt>
+  <dd>Thanks to the <code>next-seo</code> library, making your website SEO optimized is easier than ever!</dd>
 </dl>
