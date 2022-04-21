@@ -14,9 +14,17 @@ const Home: NextPage = () => {
           Boilerplate
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
+        <p className={styles.description} style={{ marginTop: "4rem" }}>
+          Get started by running{" "}
+          <code className={styles.code}>npm run cleanAndSetup</code> or{" "}
+          <code className={styles.code}>yarn cleanAndSetup</code>
+        </p>
+        <p
+          className={styles.description}
+          style={{ marginTop: "1rem", marginBottom: "4rem" }}
+        >
+          This will ensure the example app is removed and that the boilerplate
+          is setup correctly.
         </p>
 
         <div className={styles.grid}>

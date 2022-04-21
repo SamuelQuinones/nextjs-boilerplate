@@ -19,10 +19,12 @@
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .content {
-  display: block;
+  display: flex;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
@@ -45,6 +47,10 @@
 .content a:focus {
   font-weight: 600;
 }
+.content a:hover,
+.content a:focus {
+  font-weight: 600;
+}
 
 @media (min-width: 640px) {
   .header {
@@ -53,13 +59,7 @@
     overflow-y: visible;
   }
 
-  .nav {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .content {
-    display: flex;
     padding: 0;
   }
 
