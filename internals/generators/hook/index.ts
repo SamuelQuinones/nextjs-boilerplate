@@ -20,8 +20,7 @@ export const HookGenerator: PlopGeneratorConfig = {
     },
   ],
   actions: (data) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const answers = data as Answers;
+    const _answers = data as Answers;
     const actions: Actions = [];
 
     const newHookPath = `${hooksDirectory}/{{kebabCase ${HookPromptConfig.hookName}}}.ts`;

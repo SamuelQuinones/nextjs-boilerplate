@@ -57,7 +57,7 @@ yarn cleanAndSetup yarn
   <dd>Never write bloated querySelector or element contains functions again thanks to the easy to use utility functions in <code>DomHelper.ts</code></dd>
 
   <dt>Scaffolding via generators</dt>
-  <dd>Create hooks right from your terminal</dd>
+  <dd>Create hooks, pages, and API routes right from the command line</dd>
 
   <dt>Focus on SEO</dt>
   <dd>Thanks to the <code>next-seo</code> library, making your website SEO optimized is easier than ever!</dd>

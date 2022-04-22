@@ -2,11 +2,11 @@
 import shelljs from "shelljs";
 import { NodePlopAPI } from "node-plop";
 import { HookGenerator } from "./hook";
+import { PageGenerator } from "./page";
 
 export default function plop(plop: NodePlopAPI) {
-  //@ts-ignore this works just fine
-
   plop.setGenerator("hook", HookGenerator);
+  plop.setGenerator("page", PageGenerator);
 
   plop.setActionType("prettify", (answers, config) => {
     const data = config?.data as Record<string, any>;
