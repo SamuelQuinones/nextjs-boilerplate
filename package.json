@@ -25,9 +25,9 @@
   "devDependencies": {
     "@types/node": "17.0.25",
     "@types/react": "18.0.5",
-    "@types/react-dom": "18.0.1",
+    "@types/react-dom": "18.0.2",
     "@types/shelljs": "0.8.11",
-    "@typescript-eslint/eslint-plugin": "5.19.0",
+    "@typescript-eslint/eslint-plugin": "5.20.0",
     "@typescript-eslint/parser": "5.20.0",
     "cross-env": "7.0.3",
     "eslint": "8.13.0",

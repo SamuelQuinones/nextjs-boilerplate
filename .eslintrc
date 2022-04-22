@@ -19,6 +19,9 @@
     // may turn this on later, creates issues for HTML
     "react/no-unescaped-entities": 0,
 
+    //warn about strict inquality
+    "eqeqeq": ["warn", "smart"],
+
     // This rule is not compatible with Next.js's <Link /> components
     "jsx-a11y/anchor-is-valid": "off",
 

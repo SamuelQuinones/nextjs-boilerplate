@@ -18,6 +18,44 @@ export enum PagePromptConfig {
 
 type Answers = { [P in PagePromptConfig]: string };
 
+function pathHelper(
+  pageDirectory: string,
+  folderIsDynamic: boolean,
+  catchAll: boolean,
+  dynamicRoute: boolean,
+  nestedPath: boolean
+) {
+  //* src/[parmam]/param.tsx
+  if (folderIsDynamic) {
+    let folderName = `[{{ snakeCase ${PagePromptConfig.pageName} }}]`;
+    if (catchAll) {
+      folderName = `[...{{ snakeCase ${PagePromptConfig.pageName} }}]`;
+    }
+    return `${pageDirectory}/${folderName}/{{ kebabCase ${PagePromptConfig.pageName} }}.tsx`;
+  }
+  //* src/param/[param].tsx
+  if (dynamicRoute && nestedPath) {
+    let fileName = `[{{ snakeCase ${PagePromptConfig.pageName} }}].tsx`;
+    if (catchAll) {
+      fileName = `[...{{ snakeCase ${PagePromptConfig.pageName} }}].tsx`;
+    }
+    return `${pageDirectory}/{{ kebabCase ${PagePromptConfig.pageName} }}/${fileName}`;
+  }
+  //* src/[param].tsx
+  if (dynamicRoute) {
+    let fileName = `[{{ snakeCase ${PagePromptConfig.pageName} }}].tsx`;
+    if (catchAll) {
+      fileName = `[...{{ snakeCase ${PagePromptConfig.pageName} }}].tsx`;
+    }
+    return `${pageDirectory}/${fileName}`;
+  }
+  //* src/param/index.tsx
+  if (nestedPath) {
+    return `${pageDirectory}/{{ snakeCase ${PagePromptConfig.pageName} }}/index.tsx`;
+  }
+  return `${pageDirectory}/{{ kebabCase ${PagePromptConfig.pageName} }}.tsx`;
+}
+
 export const PageGenerator: PlopGeneratorConfig = {
   description: "Generate a new page",
   prompts: [
@@ -25,8 +63,8 @@ export const PageGenerator: PlopGeneratorConfig = {
       type: "list",
       name: PagePromptConfig.rootOrNested,
       message:
-        "Will this page be placed on the root, or inside an existing directory? (as a nested path)",
-      choices: ["root", "nested path"],
+        "Will this page be placed on the root, or inside an existing directory?",
+      choices: ["root", "inside existing"],
       default: "root",
     },
     // TODO when nested path, allow user to chose the xisting path
@@ -94,23 +132,16 @@ export const PageGenerator: PlopGeneratorConfig = {
     const answers = data as Answers;
     const actions: Actions = [];
 
-    let filePath = `${pageDirectory}/{{ kebabCase ${PagePromptConfig.pageName} }}.tsx`;
-
     const folderIsDynamic =
       "The folder itself should be the dynamic route (not recommended)";
-    if (answers.folderIsDynamic === folderIsDynamic) {
-      let folderName = `[{{ snakeCase ${PagePromptConfig.pageName} }}]`;
-      if (answers.catchAll) {
-        folderName = `[...{{ snakeCase ${PagePromptConfig.pageName} }}]`;
-      }
-      filePath = `${pageDirectory}/${folderName}/{{ kebabCase ${PagePromptConfig.pageName} }}.tsx`;
-    } else {
-      let fileName = `[{{ snakeCase ${PagePromptConfig.pageName} }}].tsx`;
-      if (answers.catchAll) {
-        fileName = `[...{{ snakeCase ${PagePromptConfig.pageName} }}].tsx`;
-      }
-      filePath = `${pageDirectory}/{{ kebabCase ${PagePromptConfig.pageName} }}/${fileName}`;
-    }
+    const filePath = pathHelper(
+      pageDirectory,
+      answers.folderIsDynamic === folderIsDynamic,
+      //@ts-ignore this is a boolean
+      answers.catchAll,
+      answers.dynamicRoute,
+      answers.nestedPath
+    );
 
     actions.push({
       type: "add",
