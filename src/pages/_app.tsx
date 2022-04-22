@@ -12,7 +12,7 @@ const Layout = ({ children }: Record<string, any>) => {
       <Header>
         <p>Next.JS Boilerplate</p>
         <Link href="/">
-          <a>Home</a>
+          <a>Go Home</a>
         </Link>
       </Header>
       <main

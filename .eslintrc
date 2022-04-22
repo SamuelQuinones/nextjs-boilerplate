@@ -28,6 +28,12 @@
     // no displayname
     "react/display-name": ["off"],
 
+    // sometimes you need unsued vars
+    "no-unused-vars": [
+      "warn",
+      { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }
+    ],
+
     // deps for custom hooks
     "react-hooks/exhaustive-deps": [
       "warn",
@@ -60,7 +66,10 @@
         "@typescript-eslint/no-non-null-assertion": "off",
         // warn about unused vars
         "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": ["warn"],
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }
+        ],
         "no-empty-function": "off",
         "@typescript-eslint/no-empty-function": ["warn"]
       }
