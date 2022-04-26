@@ -20,6 +20,7 @@ export async function cleanAndSetup() {
 
   shelljs.cp("internals/startingTemplate/README.md", "README.md");
   shelljs.cp("internals/startingTemplate/.gitignore.base", ".gitignore");
+  shelljs.cp("internals/startingTemplate/next.config.js", "next.config.js");
   shelljs.cp("-r", "internals/startingTemplate/public/*", "public");
   shelljs.cp("-r", "internals/startingTemplate/src*", "src");
 
