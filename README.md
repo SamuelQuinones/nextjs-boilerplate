@@ -62,3 +62,11 @@ yarn cleanAndSetup yarn
   <dt>Focus on SEO</dt>
   <dd>Thanks to the <code>next-seo</code> library, making your website SEO optimized is easier than ever!</dd>
 </dl>
+
+## Showcase
+
+> To add your URL to the showcase, make a PR using the _update_showcase_ template. I'd love to show off any project that uses this template 🙂
+
+| User / Organization | App Name    | Repository                                    | App Url             |
+| ------------------- | ----------- | --------------------------------------------- | ------------------- |
+| SamuelQuinones      | samtheq.com | https://github.com/SamuelQuinones/samtheq.com | https://samtheq.com |
