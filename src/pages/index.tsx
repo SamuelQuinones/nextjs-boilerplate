@@ -45,7 +45,7 @@ const Home: NextPage = () => {
           <Link href="/showcase">
             <a className={styles.card}>
               <h2>Examples &rarr;</h2>
-              <p>Look at exampels of projects that use this template.</p>
+              <p>Look at examples of projects that use this template.</p>
             </a>
           </Link>
 
