@@ -1,10 +1,12 @@
-import examples, { Example } from "@util/Showcase";
+import type { Example } from "@util/Showcase";
 import styles from "../styles/Showcase.module.css";
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { NextSeo } from "next-seo";
 
 type StaticProps = { examples: Example[] };
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+  //* lazy load examples
+  const examples = (await import("../util/Showcase")).default;
   return { props: { examples } };
 };
 
