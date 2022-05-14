@@ -35,6 +35,7 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-prettier": "4.0.0",
+    "inquirer-directory": "2.2.0",
     "node-plop": "0.26.2",
     "plop": "2.7.6",
     "prettier": "2.6.2",
