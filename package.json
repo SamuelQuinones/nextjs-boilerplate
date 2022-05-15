@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "cleanAndSetup": "ts-node ./internals/scripts/clean.ts",
+    "refresh": "ts-node ./internals/scripts/refresh.ts",
     "dev": "next dev",
     "dev:debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",

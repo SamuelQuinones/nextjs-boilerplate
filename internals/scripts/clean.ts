@@ -65,6 +65,8 @@ async function shouldUseYarn() {
 function modifyPackageJSON(usingYarn = false) {
   //@ts-ignore this warning is not useful
   delete packageJson["scripts"]["cleanAndSetup"];
+  //@ts-ignore this warning is not useful
+  delete packageJson["scripts"]["refresh"];
 
   let installCode = "npm install";
   if (usingYarn) {
