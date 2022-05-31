@@ -69,8 +69,10 @@ function modifyPackageJSON(usingYarn = false) {
   delete packageJson["scripts"]["refresh"];
 
   let installCode = "npm install";
+  let installDepCode = "npm install";
   if (usingYarn) {
     installCode = "yarn install";
+    installDepCode = "yarn add";
     packageJson["scripts"]["build:full"] = "yarn build && yarn export";
   }
 
@@ -78,6 +80,11 @@ function modifyPackageJSON(usingYarn = false) {
   shelljs.exec('prettier --write "package.json"', { silent: true });
 
   shelljs.exec(installCode, { silent: false });
+
+  const nodeVer = shelljs.exec("node --version", { silent: true }).stdout;
+  const nodeVerTransformed = parseInt(nodeVer.replace(/[^0-9\.]/g, ""));
+
+  shelljs.exec(`${installDepCode} -D @types/node@^${nodeVerTransformed}`);
 }
 
 (async function () {
