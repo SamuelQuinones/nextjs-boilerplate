@@ -1,7 +1,7 @@
 import type { RefObject } from "react";
 
 /**
- * utility qrapper for `{ELEMENT}.querySelector()`
+ * utility wrapper for `{ELEMENT}.querySelector()`
  */
 export function qs<T extends HTMLElement>(
   element: T | Document,
@@ -11,7 +11,7 @@ export function qs<T extends HTMLElement>(
 }
 
 /**
- * utility wraooer for `{ELEMENT}.querySelectorAll()`
+ * utility wrapper for `{ELEMENT}.querySelectorAll()`
  */
 export function qsa<T extends HTMLElement>(
   element: T | Document,
@@ -33,7 +33,7 @@ export function contains(context: Element, node: Element) {
 /**
  * Helper function that will resolve the input arguement to a HTML element if possible
  *
- * @param target either a HTML ekement or a ref object pointing to a HTML element
+ * @param target either a HTML element or a ref object pointing to a HTML element
  */
 export function resolveElement<T extends HTMLElement>(
   target: T | RefObject<T>

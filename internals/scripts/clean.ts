@@ -15,14 +15,14 @@ export async function cleanAndSetup() {
 
   shelljs.rm("-rf", "public/*");
   shelljs.rm("-rf", "src/*");
-  shelljs.rm("-rf", ".github/*");
+  shelljs.rm("-rf", ".github");
   shelljs.rm("-rf", "vercel.json");
 
   shelljs.cp("internals/startingTemplate/README.md", "README.md");
   shelljs.cp("internals/startingTemplate/.gitignore.base", ".gitignore");
   shelljs.cp("internals/startingTemplate/next.config.js", "next.config.js");
   shelljs.cp("-r", "internals/startingTemplate/public/*", "public");
-  shelljs.cp("-r", "internals/startingTemplate/src*", "src");
+  shelljs.cp("-r", "internals/startingTemplate/src/*", "src");
 
   shelljs.rm("-rf", "internals/startingTemplate");
   //* POTENTIALLY CHANGE THIS IF MORE USEFUL SCRIPTS COME UP
