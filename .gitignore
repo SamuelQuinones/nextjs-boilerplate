@@ -13,6 +13,7 @@ yarn.lock
 # next.js
 /.next/
 /out/
+/.swc/
 
 # production
 /build
