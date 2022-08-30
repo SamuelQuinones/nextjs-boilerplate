@@ -68,6 +68,15 @@ function modifyPackageJSON(usingYarn = false) {
   //@ts-ignore this warning is not useful
   delete packageJson["scripts"]["refresh"];
 
+  // Should assign correct app name
+  const appName = path.basename(path.join(__dirname, "../../"));
+  shelljs.echo(
+    "\x1b[34m",
+    `Setting 'package.json' name property as ${appName}, be sure to change it if this is incorrect`,
+    "\x1b[0m"
+  );
+  packageJson["name"] = appName;
+
   let installCode = "npm install";
   let installDepCode = "npm install";
   if (usingYarn) {
