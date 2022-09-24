@@ -1,6 +1,6 @@
 import shelljs from "shelljs";
 import path from "path";
-import { writeFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import inquirer from "inquirer";
 import packageJson from "../../package.json";
 
@@ -21,6 +21,7 @@ export async function cleanAndSetup() {
   shelljs.cp("internals/startingTemplate/README.md", "README.md");
   shelljs.cp("internals/startingTemplate/.gitignore.base", ".gitignore");
   shelljs.cp("internals/startingTemplate/next.config.js", "next.config.js");
+  shelljs.cp("internals/startingTemplate/.env.base", ".env");
   shelljs.cp("-r", "internals/startingTemplate/public/*", "public");
   shelljs.cp("-r", "internals/startingTemplate/src/*", "src");
 
@@ -37,6 +38,7 @@ export async function cleanAndSetup() {
   const packageManager = await shouldUseYarn();
 
   modifyPackageJSON(packageManager?.toLowerCase() === "yarn");
+  fixSeoConfig();
 
   shelljs.echo(
     "\x1b[32m",
@@ -60,6 +62,24 @@ async function shouldUseYarn() {
     packageManager = target.packageManager;
   }
   return packageManager;
+}
+
+function fixSeoConfig() {
+  const appName = path.basename(path.join(__dirname, "../../"));
+  shelljs.echo(
+    "\x1b[34m",
+    `Setting 'SEO.openGraph.site_name' as '${appName}' in 'src/util/SeoConfig.ts', be sure to change it if this is incorrect`,
+    "\x1b[0m"
+  );
+  let SeoConfig = readFileSync("./src/util/SeoConfig.ts", "utf-8");
+  SeoConfig = SeoConfig.replace(
+    'site_name: "nextjs-boilerplate"',
+    `site_name: "${appName}"`
+  );
+  writeFileSync("./src/util/SeoConfig.ts", SeoConfig);
+  shelljs.exec(`eslint --ext js,ts,tsx --fix "src/util/SeoConfig.ts"`, {
+    silent: true,
+  });
 }
 
 function modifyPackageJSON(usingYarn = false) {
