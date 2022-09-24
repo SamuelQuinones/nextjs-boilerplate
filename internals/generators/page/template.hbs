@@ -77,7 +77,19 @@ const {{ properCase pageName }}: NextPage
 ) => {
   return (
     <>
-      <NextSeo title="{{ properCase pageName }}" />
+      {{#if existingDestination }}
+      <NextSeo 
+        title="{{ properCase pageName }}"
+        canonical={`${process.env.NEXT_PUBLIC_BASE_URL}/{{ existingDestination }}/{{ kebabCase pageName }}`}
+        openGraph={ { url: `${process.env.NEXT_PUBLIC_BASE_URL}/{{ existingDestination }}/{{ kebabCase pageName }}`  } }
+      />
+      {{else}}
+      <NextSeo 
+        title="{{ properCase pageName }}"
+        canonical={`${process.env.NEXT_PUBLIC_BASE_URL}/{{ kebabCase pageName }}`}
+        openGraph={ { url: `${process.env.NEXT_PUBLIC_BASE_URL}/{{ kebabCase pageName }}`  } }
+      />
+      {{/if}}
       <h1 style={ {textAlign: "center"} }>{{ properCase pageName }}</h1>
     </>
   );
