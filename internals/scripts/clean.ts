@@ -29,9 +29,9 @@ export async function cleanAndSetup() {
   //* POTENTIALLY CHANGE THIS IF MORE USEFUL SCRIPTS COME UP
   shelljs.rm("-rf", "internals/scripts");
 
-  shelljs.exec('prettier --write "README.md"', { silent: true });
-  shelljs.exec("eslint --ext js,ts,tsx --fix src", { silent: true });
-  shelljs.exec('prettier --write "src/styles"', {
+  shelljs.exec('npx prettier --write "README.md"', { silent: true });
+  shelljs.exec("npx eslint --ext js,ts,tsx --fix src", { silent: true });
+  shelljs.exec('npx prettier --write "src/styles"', {
     silent: true,
   });
 
@@ -77,7 +77,7 @@ function fixSeoConfig() {
     `site_name: "${appName}"`
   );
   writeFileSync("./src/util/SeoConfig.ts", SeoConfig);
-  shelljs.exec(`eslint --ext js,ts,tsx --fix "src/util/SeoConfig.ts"`, {
+  shelljs.exec(`npx eslint --ext js,ts,tsx --fix "src/util/SeoConfig.ts"`, {
     silent: true,
   });
 }
@@ -106,7 +106,7 @@ function modifyPackageJSON(usingYarn = false) {
   }
 
   writeFileSync("./package.json", JSON.stringify(packageJson));
-  shelljs.exec('prettier --write "package.json"', { silent: true });
+  shelljs.exec('npx prettier --write "package.json"', { silent: true });
 
   shelljs.exec(installCode, { silent: false });
 
