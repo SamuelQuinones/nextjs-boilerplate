@@ -35,9 +35,9 @@ export async function cleanAndSetup() {
     silent: true,
   });
 
-  const packageManager = await shouldUseYarn();
+  const packageManager = await whichPackageManager();
 
-  modifyPackageJSON(packageManager?.toLowerCase() === "yarn");
+  modifyPackageJSON(packageManager);
   fixSeoConfig();
 
   shelljs.echo(
@@ -47,7 +47,7 @@ export async function cleanAndSetup() {
   );
 }
 
-async function shouldUseYarn() {
+async function whichPackageManager() {
   let packageManager = "npm";
   if (process.argv?.[2]) {
     packageManager = process.argv?.[2];
@@ -56,12 +56,12 @@ async function shouldUseYarn() {
       message: "Which package manager will you be using?",
       name: "packageManager",
       type: "list",
-      choices: ["npm", "yarn"],
+      choices: ["npm", "yarn", "pnpm"],
       validate: (input) => Boolean(input.trim()),
     });
     packageManager = target.packageManager;
   }
-  return packageManager;
+  return packageManager.toLowerCase();
 }
 
 function fixSeoConfig() {
@@ -82,11 +82,14 @@ function fixSeoConfig() {
   });
 }
 
-function modifyPackageJSON(usingYarn = false) {
+function modifyPackageJSON(packageManager = "npm") {
   //@ts-ignore this warning is not useful
   delete packageJson["scripts"]["cleanAndSetup"];
   //@ts-ignore this warning is not useful
   delete packageJson["scripts"]["refresh"];
+
+  const usingYarn = packageManager === "yarn";
+  const usingPnpm = packageManager === "pnpm";
 
   // Should assign correct app name
   const appName = path.basename(path.join(__dirname, "../../"));
@@ -103,6 +106,10 @@ function modifyPackageJSON(usingYarn = false) {
     installCode = "yarn install";
     installDepCode = "yarn add";
     packageJson["scripts"]["build:full"] = "yarn build && yarn export";
+  } else if (usingPnpm) {
+    installCode = "pnpm install";
+    installDepCode = "pnpm add";
+    packageJson["scripts"]["build:full"] = "pnpm build && pnpm export";
   }
 
   writeFileSync("./package.json", JSON.stringify(packageJson));

@@ -22,6 +22,11 @@ or
 yarn create next-app --example https://github.com/SamuelQuinones/nextjs-boilerplate my-app
 ```
 
+or
+```shell
+pnpm create next-app --example https://github.com/SamuelQuinones/nextjs-boilerplate my-app
+```
+
 **In the event that does not work, you can clone the repository or click "Use this template" (as this is a template repo)**
 
 If you're interested you can check out the built in example app
@@ -45,6 +50,12 @@ Additionally, this script takes in a single argument meant to be your package ma
 
 ```shell
 yarn cleanAndSetup yarn
+```
+
+or pnpm:
+
+```shell
+pnpm cleanAndSetup pnpm
 ```
 
 ## Features
