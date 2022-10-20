@@ -12,7 +12,7 @@ const SEO: DefaultSeoProps = {
   openGraph: {
     type: "website",
     url: process.env.NEXT_PUBLIC_BASE_URL,
-    site_name: "nextjs-boilerplate",
+    siteName: "nextjs-boilerplate",
     images: [
       {
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/favicon.ico`,

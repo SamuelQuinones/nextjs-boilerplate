@@ -73,8 +73,8 @@ function fixSeoConfig() {
   );
   let SeoConfig = readFileSync("./src/util/SeoConfig.ts", "utf-8");
   SeoConfig = SeoConfig.replace(
-    'site_name: "nextjs-boilerplate"',
-    `site_name: "${appName}"`
+    'siteName: "nextjs-boilerplate"',
+    `siteName: "${appName}"`
   );
   writeFileSync("./src/util/SeoConfig.ts", SeoConfig);
   shelljs.exec(`eslint --ext js,ts,tsx --fix "src/util/SeoConfig.ts"`, {
