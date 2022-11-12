@@ -6,6 +6,8 @@ Skip the tedious setup of a new NextJS project by using this minimal advanced bo
 
 </div>
 
+> Once the new `app` directory and other new features of [NextJS version 13](https://nextjs.org/blog/next-13) are production ready, I will attempt to update this template accordingly.
+
 ## Getting Started
 
 You can use any package manager for this project, it was created with npm but is designed to be easily inter-changeable.
