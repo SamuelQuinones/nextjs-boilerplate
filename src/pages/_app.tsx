@@ -11,9 +11,7 @@ const Layout = ({ children }: Record<string, any>) => {
     <>
       <Header>
         <p>Next.JS Boilerplate</p>
-        <Link href="/">
-          <a>Go Home</a>
-        </Link>
+        <Link href="/">Go Home</Link>
       </Header>
       <main
         className="app-container"

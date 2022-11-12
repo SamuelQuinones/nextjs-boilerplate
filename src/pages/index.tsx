@@ -28,13 +28,9 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <Link href="/features">
-            <a className={styles.card}>
-              <h2>Features &rarr;</h2>
-              <p>
-                Additional features focused on improving developer experience
-              </p>
-            </a>
+          <Link href="/features" className={styles.card}>
+            <h2>Features &rarr;</h2>
+            <p>Additional features focused on improving developer experience</p>
           </Link>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
@@ -42,11 +38,9 @@ const Home: NextPage = () => {
             <p>Learn about Next.js in an interactive course with quizzes!</p>
           </a>
 
-          <Link href="/showcase">
-            <a className={styles.card}>
-              <h2>Examples &rarr;</h2>
-              <p>Look at examples of projects that use this template.</p>
-            </a>
+          <Link href="/showcase" className={styles.card}>
+            <h2>Examples &rarr;</h2>
+            <p>Look at examples of projects that use this template.</p>
           </Link>
 
           <a
