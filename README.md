@@ -6,7 +6,7 @@ Skip the tedious setup of a new NextJS project by using this minimal advanced bo
 
 </div>
 
-> Once the new `app` directory and other new features of [NextJS version 13](https://nextjs.org/blog/next-13) are production ready, I will attempt to update this template accordingly.
+> This template _IS_ compatible with NextJS 13, since the new features can be incrementally adopted. Once the new `app` directory and other new features of [NextJS version 13](https://nextjs.org/blog/next-13) are production ready, I will attempt to update this template accordingly to use those new features.
 
 ## Getting Started
 
